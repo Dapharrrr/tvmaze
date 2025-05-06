@@ -11,7 +11,7 @@ type EpisodeCardProps = {
 export default function EpisodeCard({ episode, showName }: EpisodeCardProps) {
   const placeholderImage = 'https://via.placeholder.com/250x140?text=No+Image';
   const formattedDate = episode.airdate 
-    ? new Date(episode.airdate).toLocaleDateString()
+    ? new Date(episode.airdate).toLocaleDateString('fr-FR')
     : 'Date inconnue';
 
   return (

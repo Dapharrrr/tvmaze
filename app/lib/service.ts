@@ -51,34 +51,30 @@ export const fetchShowImages = async (showId: string): Promise<TVMazeImage[]> =>
   return response.json();
 };
 
-export async function getPerson(id: string): Promise<Person> {
-  console.log(`Fetching person with ID: ${id}`); // Débogage
-  
-  const response = await fetch(`https://api.tvmaze.com/people/${id}?embed=castcredits.show`, {
-    next: { revalidate: 3600 },
-  });
-
-  if (!response.ok) {
-    console.error(`API error: ${response.status} ${response.statusText}`); // Débogage
-    throw new Error(`Failed to fetch person with id ${id}`);
+/**
+ * Récupère les détails d'un acteur par ID.
+ * @param personId - ID de la personne
+ * @returns Les détails de la personne.
+ */
+export async function fetchPersonDetails(personId: number): Promise<Person> {
+  const res = await fetch(`${API_URL}/people/${personId}`);
+  if (!res.ok) {
+      throw new Error('Erreur lors du chargement des détails de l\'acteur');
   }
-  
-  return response.json();
+  return res.json();
 }
 
-export async function getPersonCastCredits(id: string): Promise<CastCredit[]> {
-  console.log(`Fetching cast credits for person ID: ${id}`); // Débogage
-  
-  const response = await fetch(`https://api.tvmaze.com/people/${id}/castcredits?embed=show`, {
-    next: { revalidate: 3600 },
-  });
-
-  if (!response.ok) {
-    console.error(`API error: ${response.status} ${response.statusText}`); // Débogage
-    throw new Error(`Failed to fetch cast credits for person with id ${id}`);
+/**
+* Récupère les séries où l'acteur a joué.
+* @param personId - ID de la personne
+* @returns Les crédits d'acteur.
+*/
+export async function fetchPersonCastCredits(personId: number): Promise<CastCredit[]> {
+  const res = await fetch(`${API_URL}/people/${personId}/castcredits?embed=show`);
+  if (!res.ok) {
+      throw new Error('Erreur lors du chargement des séries de l\'acteur');
   }
-  
-  return response.json();
+  return res.json();
 }
 
 

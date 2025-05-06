@@ -77,7 +77,9 @@ export default function ShowTabs({ show, seasons }: ShowTabsProps) {
               {show.premiered && (
                 <div className="flex">
                   <span className="text-gray-400 w-1/3">Première:</span>
-                  <span className="text-white">{new Date(show.premiered).toLocaleDateString()}</span>
+                  <span className="text-white">
+                    {new Date(show.premiered).toLocaleDateString('fr-FR')}
+                  </span>
                 </div>
               )}
               {show.schedule && (

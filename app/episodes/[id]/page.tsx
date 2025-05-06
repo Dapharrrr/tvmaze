@@ -53,7 +53,7 @@ export default async function EpisodePage({ params }: { params: { id: string } }
             </span>
             {episode.airdate && (
               <span className="text-gray-400 ml-2 text-sm">
-                {new Date(episode.airdate).toLocaleDateString()}
+                {new Date(episode.airdate).toLocaleDateString('fr-FR')}
               </span>
             )}
           </div>

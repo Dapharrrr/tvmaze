@@ -11,6 +11,8 @@ type PersonCardProps = {
 export default function PersonCard({ person, character }: PersonCardProps) {
   const placeholderImage = 'https://via.placeholder.com/210x295?text=No+Image';
   
+  console.log('PersonCard id:', person.id, person);
+  
   return (
     <Link href={`/people/${person.id}`}>
       <div className="bg-gray-800 rounded-lg overflow-hidden shadow-md transition transform hover:scale-105">
